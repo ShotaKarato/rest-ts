@@ -18,9 +18,11 @@ export const createUser = async (input: {
 export const validatePassword = async (email: string, password: string) => {
   // findOne is mongodb specific method, so service has a role to interact with db
   const user = await User.findOne({ email });
+
   if (!user) return false;
 
   const isValid = await user.comparePassword(password);
+
   if (!isValid) return false;
 
   return omit(user.toJSON(), "password");

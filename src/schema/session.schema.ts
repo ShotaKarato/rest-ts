@@ -7,7 +7,7 @@ export const createSessionSchema = object({
     }).email("Not a valid email"),
     password: string({
       required_error: "Password is required",
-    }).min(6, "Password too short - should be 6 plus minimum"),
+    }),
   }),
 });
 
